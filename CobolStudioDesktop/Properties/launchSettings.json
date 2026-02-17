@@ -2,10 +2,9 @@
   "profiles": {
     "Windows Machine": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      "nativeDebugging": false,
+        "hotReloadEnabled": false,
+        "launchBrowser": false
     }
   }
 }
