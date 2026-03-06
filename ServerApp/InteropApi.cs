@@ -8,8 +8,8 @@ namespace BlazorLib.Interop
         List<ScriptFile> GetCobolFiles();
         List<ScriptFile> GetPythonFiles();
 
-        void LoadCobolFiles();
-        void LoadPythonFiles();
+        Task LoadCobolFilesAsync();
+        Task LoadPythonFilesAsync();
     }
 
     public class InteropApi : IInteropApi
@@ -60,6 +60,18 @@ namespace BlazorLib.Interop
             PythonFiles.Add(new ScriptFile { FileName = "utils.py", Content = "def add(a, b):\n    return a + b" });
             PythonFiles.Add(new ScriptFile { FileName = "main.py", Content = "if __name__ == '__main__':\n    print('Hello World')" });
             PythonFiles.Add(new ScriptFile { FileName = "config.py", Content = "DB_HOST = 'localhost'\nDB_PORT = 5432" });
+        }
+
+        public Task LoadCobolFilesAsync()
+        {
+            LoadCobolFiles();
+            return Task.CompletedTask;
+        }
+
+        public Task LoadPythonFilesAsync()
+        {
+            LoadPythonFiles();
+            return Task.CompletedTask;
         }
     }
 }

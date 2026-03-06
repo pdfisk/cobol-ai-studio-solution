@@ -31,9 +31,9 @@
 
 @code {
 
-	protected override void OnInitialized()
+	protected override async Task OnInitializedAsync()
 	{
-		InteropApi.LoadCobolFiles();
+		await InteropApi.LoadCobolFilesAsync();
 		StateHasChanged();
 	}
 

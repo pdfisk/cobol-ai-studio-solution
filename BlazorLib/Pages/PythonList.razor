@@ -50,9 +50,9 @@
 	// INITIALIZATION
 	// ==========================================
 
-	protected override void OnInitialized()
+	protected override async Task OnInitializedAsync()
 	{
-		InteropApi.LoadPythonFiles();
+		await InteropApi.LoadPythonFilesAsync();
 		StateHasChanged();
 	}
 

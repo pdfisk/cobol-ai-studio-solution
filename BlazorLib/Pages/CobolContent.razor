@@ -42,11 +42,11 @@
     private string CobolContentDisplay = "";
     private string SystemStatus = "Ready.";
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-		InteropApi.LoadCobolFiles();
+		await InteropApi.LoadCobolFilesAsync();
 
-        var file =  InteropApi.GetCobolFiles().FirstOrDefault(f => f.FileName == FileName);
+        var file = InteropApi.GetCobolFiles().FirstOrDefault(f => f.FileName == FileName);
         if (file != null)
         {
             CobolContentDisplay = file.Content;

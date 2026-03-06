@@ -86,8 +86,19 @@ namespace BlazorLib.Server
 
         private async Task ProcessRequestAsync(HttpListenerContext context)
         {
-            var url = context.Request.RawUrl?.TrimStart('/');
+            var request = context.Request;
             var response = context.Response;
+            var url = request.RawUrl?.TrimStart('/');
+
+            AddCorsHeaders(response);
+
+            if (request.HttpMethod == "OPTIONS")
+            {
+                response.StatusCode = (int)HttpStatusCode.OK;
+                response.Close();
+                return;
+            }
+
             try
             {
                 var responseString = HandleRequest(url ?? string.Empty);
@@ -100,6 +111,13 @@ namespace BlazorLib.Server
             {
                 response.Close();
             }
+        }
+
+        private static void AddCorsHeaders(HttpListenerResponse response)
+        {
+            response.AddHeader("Access-Control-Allow-Origin", "*");
+            response.AddHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+            response.AddHeader("Access-Control-Allow-Headers", "Content-Type");
         }
 
         private string HandleRequest(string url)

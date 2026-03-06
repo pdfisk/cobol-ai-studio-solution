@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Shared;
 
 namespace BlazorLib.Interop
 {
@@ -9,7 +10,11 @@ namespace BlazorLib.Interop
         /// </summary>
         public static IServiceCollection AddBlazorLibInterop(this IServiceCollection services)
         {
-            services.AddSingleton<IInteropApi, InteropApi>();
+            services.AddScoped<IInteropApi>(sp =>
+            {
+                var httpClient = new HttpClient { BaseAddress = new Uri(Constants.SimpleHttpServerUrl) };
+                return new InteropApi(httpClient);
+            });
             return services;
         }
     }

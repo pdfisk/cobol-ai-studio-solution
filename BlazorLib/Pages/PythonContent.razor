@@ -43,9 +43,9 @@
 	private string SystemStatus = "Ready.";
 
 
-	protected override void OnInitialized()
+	protected override async Task OnInitializedAsync()
 	{
-		InteropApi.LoadPythonFiles();
+		await InteropApi.LoadPythonFilesAsync();
 
 		var file = InteropApi.GetPythonFiles().FirstOrDefault(f => f.FileName == FileName);
 		if (file != null)
