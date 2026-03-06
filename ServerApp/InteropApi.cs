@@ -41,9 +41,19 @@ namespace BlazorLib.Interop
 
             _cobolInitialized = true;
             CobolFiles.Clear();
-            CobolFiles.Add(new ScriptFile { FileName = "program-1.cobol", Content = "IDENTIFICATION DIVISION.\nPROGRAM-ID. PROGRAM-1." });
-            CobolFiles.Add(new ScriptFile { FileName = "program-2.cobol", Content = "IDENTIFICATION DIVISION.\nPROGRAM-ID. PROGRAM-2." });
-            CobolFiles.Add(new ScriptFile { FileName = "program-3.cobol", Content = "IDENTIFICATION DIVISION.\nPROGRAM-ID. PROGRAM-3." });
+
+            var cobolPath = Path.Combine(Directory.GetCurrentDirectory(), "data", "cobol");
+            if (!Directory.Exists(cobolPath))
+            {
+                return;
+            }
+
+            foreach (var filePath in Directory.EnumerateFiles(cobolPath, "*.cobol"))
+            {
+                var fileName = Path.GetFileName(filePath);
+                var content = File.ReadAllText(filePath);
+                CobolFiles.Add(new ScriptFile { FileName = fileName, Content = content });
+            }
         }
 
         public void LoadPythonFiles()

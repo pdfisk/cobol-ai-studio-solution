@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "cobol": {
+    "directives": {
+      "cobol.cobol": [],
+      "addamt.cobol": []
+    }
+  }
+}
