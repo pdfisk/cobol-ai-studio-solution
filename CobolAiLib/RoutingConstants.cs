@@ -1,4 +1,4 @@
-﻿namespace CobolAiLib.constants
+﻿namespace CobolAiLib
 {
     public class RoutingConstants
     {

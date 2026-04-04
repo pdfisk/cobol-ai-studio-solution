@@ -7,9 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.JSInterop" Version="10.0.5" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3856.49" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <Compile Remove="constants\**" />
+    <Compile Remove="interfaces\**" />
+    <EmbeddedResource Remove="constants\**" />
+    <EmbeddedResource Remove="interfaces\**" />
+    <None Remove="constants\**" />
+    <None Remove="interfaces\**" />
   </ItemGroup>
-	
+
 </Project>

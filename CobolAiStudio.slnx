@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="CobolAiDesktop/CobolAiDesktop.csproj" />
+  <Project Path="CobolAiGui/CobolAiGui.csproj" />
   <Project Path="CobolAiLib/CobolAiLib.csproj" />
   <Project Path="CobolAiServer/CobolAiServer.csproj" />
 </Solution>
