@@ -3,4 +3,5 @@ bin/
 obj/
 CobolAiDesktop/
 CobolAiGui/
+CobolAiLib/
 CobolAiServer/
